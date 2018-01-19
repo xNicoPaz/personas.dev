@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCountriesTable extends Migration
+class AddTownFkToPeople extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateCountriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->increments('id');
-            $table->string('iso', 2);
-            $table->string('name', 100);
-
-            $table->timestamps();
+        Schema::table('people', function (Blueprint $table) {
+            //
+            $table->foreign('town_id')->references('id')->on('towns');
         });
     }
 
@@ -31,6 +26,9 @@ class CreateCountriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::table('people', function (Blueprint $table) {
+            //
+            $table->dropForeign('people_town_id_foreign');
+        });
     }
 }
