@@ -28,7 +28,7 @@ class CreatePeopleTable extends Migration
             $table->string('first_name', 100);
             $table->integer('dni')->unique();
             $table->timestamp('birthdate');
-            $table->binary('picture');
+            $table->binary('picture')->nullable();
             $table->string('address', 100);
 
             $table->integer('town_id')->unsigned();
