@@ -17,13 +17,13 @@ Route::get('/', function () {
 
 Route::get('/paises/crear', 'CountryController@create');
 
-
 Route::get('/provincias/crear', 'ProvinceController@create');
 
 Route::get('/localidades/crear', 'TownController@create');
+Route::get('/localidades', 'TownController@index');
 
 Route::get('/personas/crear', 'PersonController@create');
-
+Route::get('/personas', 'PersonController@index');
 
 /*Auth*/
 Auth::routes();

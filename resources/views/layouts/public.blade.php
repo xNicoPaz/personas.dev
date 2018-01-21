@@ -14,5 +14,6 @@
 	<br>
 	@include('partials.footer')
 	@include('partials.sharedScripts')
+	@yield('customScripts')
 </body>	
 </html>

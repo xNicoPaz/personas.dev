@@ -14,7 +14,7 @@ class TownController extends Controller
      */
     public function index()
     {
-        //
+        return view('localidades.index');
     }
 
     /**

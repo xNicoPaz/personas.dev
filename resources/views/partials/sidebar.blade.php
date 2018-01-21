@@ -1,6 +1,5 @@
 <?php 
   $pathArray = explode('/', Request::path()); 
-  $subDir = $pathArray[1];
 ?>
 <div class="col-lg-3">
 	@if($pathArray[0] === "home" || $pathArray[0] === "index" || $pathArray[0] === "")
@@ -9,7 +8,7 @@
 	<h1 class="my-4">Opciones</h1>
 	<div class="list-group">
 		<a href="{{ url('/' . $pathArray[0] . '/crear') }}" 
-            @if($subDir === "crear")
+            @if(count($pathArray) > 1 && $pathArray[1] === "crear")
             	class="list-group-item active"
             @else
             	class="list-group-item"
