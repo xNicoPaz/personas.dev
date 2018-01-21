@@ -25,6 +25,9 @@ class CountriesTableSeeder extends Seeder
 {
     public function run()
     {
+		/*
+		Insertar todos los paises del mundo
+
 		$listaInserts = "INSERT INTO `countries` (id, iso, name) VALUES(1, 'AF', 'Afganistán');
 			INSERT INTO `countries` (id, iso, name) VALUES(2, 'AX', 'Islas Gland');
 			INSERT INTO `countries` (id, iso, name) VALUES(3, 'AL', 'Albania');
@@ -269,7 +272,11 @@ class CountriesTableSeeder extends Seeder
 		$arrayInserts = explode(";", $listaInserts);
 		for($i=0; $i<count($arrayInserts); $i++){
 			DB::statement($arrayInserts[$i]);
-		}
+		}*/
+
+		Country::create([
+			'name' => 'Argentina'
+		]);
     }
 }
 
@@ -277,8 +284,7 @@ class ProvincesTownsPeopleTableSeeder extends Seeder
 {
 	public function run(){
 		//Argentina tiene id = 13
-		$arg = Country::find(13);
-
+		$arg = Country::where('name', '=', 'Argentina')->get()[0];
 		/*
 			Dos provincias, como para probar
 		*/

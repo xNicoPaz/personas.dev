@@ -17,7 +17,6 @@ class CreateCountriesTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('iso', 2);
             $table->string('name', 100);
 
             $table->timestamps();
