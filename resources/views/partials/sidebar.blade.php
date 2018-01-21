@@ -6,7 +6,7 @@
 	@if($pathArray[0] === "home" || $pathArray[0] === "index" || $pathArray[0] === "")
 		<h1 class="my-4"></h1>	
 	@else
-	<h1 class="my-4">Opciones {{ Request::path() }}</h1>
+	<h1 class="my-4">Opciones</h1>
 	<div class="list-group">
 		<a href="{{ url('/' . $pathArray[0] . '/crear') }}" 
             @if($subDir === "crear")

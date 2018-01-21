@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Person;
+use App\Town;
 use Illuminate\Http\Request;
 
 class PersonController extends Controller
@@ -24,7 +25,7 @@ class PersonController extends Controller
      */
     public function create()
     {
-        //
+        return view('personas.create');
     }
 
     /**

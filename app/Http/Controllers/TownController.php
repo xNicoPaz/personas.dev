@@ -24,7 +24,7 @@ class TownController extends Controller
      */
     public function create()
     {
-        //
+        return view('localidades.create');
     }
 
     /**

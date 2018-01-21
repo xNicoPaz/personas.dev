@@ -24,7 +24,7 @@ class ProvinceController extends Controller
      */
     public function create()
     {
-        //
+        return view('provincias.create');
     }
 
     /**

@@ -15,8 +15,14 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/paises/crear', 'CountryController@create');
 
 
+Route::get('/provincias/crear', 'ProvinceController@create');
+
+Route::get('/localidades/crear', 'TownController@create');
+
+Route::get('/personas/crear', 'PersonController@create');
 
 
 /*Auth*/
