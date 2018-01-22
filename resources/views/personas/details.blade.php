@@ -53,14 +53,14 @@
 		</div>
 		<div class="form-group">
 			<label for="address" class="col-lg-2">Dirección</label>
-			<input type="text" class="custom-input col-lg-7" name="address" @if(!$isEdit) disabled @endif value="{{ $person->address }}">
+			<input type="text" class="custom-input col-lg-7 form-control" name="address" @if(!$isEdit) disabled @endif value="{{ $person->address }}">
 		</div>
 		<div class="form-group">
 			<label for="" class="col-lg-2">Localidad</label>
-			<select name="town_id" @if(!$isEdit) disabled @endif>
+			<select class="col-lg-7 custom-input form-control" name="town_id" @if(!$isEdit) disabled @endif>
 			@foreach($towns as $town)
 				<option value="{{ $town->id }}" 
-					@if($person->id === $town->id)
+					@if($person->town->id === $town->id)
 						selected 
 					@endif
 					 >{{ $town->name }}
@@ -68,6 +68,5 @@
 			@endforeach
 			</select>
 		</div>
-		
 	</form>
 @endsection

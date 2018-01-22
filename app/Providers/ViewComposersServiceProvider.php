@@ -8,6 +8,8 @@ use App\Http\ViewComposers\IndexPersonViewComposer;
 use App\Http\ViewComposers\IndexTownViewComposer;
 use App\Http\ViewComposers\IndexProvinceViewComposer;
 use App\Http\ViewComposers\IndexCountryViewComposer;
+use App\Http\ViewComposers\CreateTownViewComposer;
+use App\Http\ViewComposers\CreateProvinceViewComposer;
 use Illuminate\Support\Facades\View;
 
 class ViewComposersServiceProvider extends ServiceProvider
@@ -29,6 +31,10 @@ class ViewComposersServiceProvider extends ServiceProvider
         View::composer('provincias.index', IndexProvinceViewComposer::class);
 
         View::composer('paises.index', IndexCountryViewComposer::class);
+    
+        View::composer('localidades.create', CreateTownViewComposer::class);
+
+        View::composer('provincias.create', CreateProvinceViewComposer::class);
     }
 
     /**

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Province;
+use App\Country;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProvinceRegisterRequest;
 
 class ProvinceController extends Controller
 {
@@ -33,9 +35,14 @@ class ProvinceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProvinceRegisterRequest $request)
     {
-        //
+        $province = Province::create([
+            'name' => $request['name'],
+            'country_id' => $request['country_id'],
+        ]);
+
+        return redirect('/provincias/' . $province->id);
     }
 
     /**
@@ -46,7 +53,12 @@ class ProvinceController extends Controller
      */
     public function show(Province $province)
     {
-        //
+        $countries = Country::all();
+        return view('provincias.details')->with([
+            'province' => $province,
+            'countries' => $countries,
+            'isEdit' => false,
+        ]);
     }
 
     /**

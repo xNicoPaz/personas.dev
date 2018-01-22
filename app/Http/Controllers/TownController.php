@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Town;
+use App\Province;
 use Illuminate\Http\Request;
+use App\Http\Requests\TownRegisterRequest;
 
 class TownController extends Controller
 {
@@ -33,9 +35,14 @@ class TownController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TownRegisterRequest $request)
     {
-        //
+        $town = Town::create([
+            'name' => $request['name'],
+            'province_id' => $request['province_id'],
+        ]);
+
+        return redirect('/localidades/' . $town->id);
     }
 
     /**
@@ -46,7 +53,12 @@ class TownController extends Controller
      */
     public function show(Town $town)
     {
-        //
+        $provinces = Province::all();
+        return view('localidades.details')->with([
+            'town' => $town,
+            'provinces' => $provinces,
+            'isEdit' => false,
+        ]);
     }
 
     /**
