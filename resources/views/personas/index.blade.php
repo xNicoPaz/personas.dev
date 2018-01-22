@@ -21,7 +21,7 @@ id="peopleTable"
 		<td>{{ $person->dni }}</td>
 		<td>{{ $person->last_name . " " . $person->first_name }}</td>
 		<td>
-			<a href="{{ url('personas/' . $person->id . '/detalles') }}"><i style="color:blue" class="fa fa-search"></i></a>
+			<a href="{{ url('personas/' . $person->id) }}"><i style="color:blue" class="fa fa-search"></i></a>
 			<a href="{{ url('personas/' . $person->id . '/detalles') }}"><i style="color:yellow" class="fa fa-pencil"></i></a>
 			<a id="deletePersonLink" href=""><i style="color:red" class="fa fa-trash"></i></a>
 

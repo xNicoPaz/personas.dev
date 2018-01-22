@@ -47,7 +47,12 @@ class PersonController extends Controller
      */
     public function show(Person $person)
     {
-        //
+        $towns = Town::all();
+        return view('personas.details')->with([
+            'person' => $person,
+            'towns' => $towns,
+            'isEdit' => false
+        ]);
     }
 
     /**
