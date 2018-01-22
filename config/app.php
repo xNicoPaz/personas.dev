@@ -179,7 +179,7 @@ return [
 
         //Service Provider para View Composers
         App\Providers\ViewComposersServiceProvider::class,
-
+        App\Providers\ValidationServiceProvider::class,
     ],
 
     /*

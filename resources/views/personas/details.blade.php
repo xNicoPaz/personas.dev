@@ -40,7 +40,13 @@
 		</div>
 		<div class="form-group">
 			<label for="picture" class="col-lg-2">Imagen</label>
-			<img src="{{ $person->picture }}" alt="Imagen de perfil">
+			<img 
+			@if($person->picture !== null)
+			 style="width:300px; height: 300px; display:block; margin: auto;" src="{{ $person->picture }}" 
+			@else
+			 style="display:none;" 
+			@endif
+			 alt="Imagen de perfil">
 			@if($isEdit)
 				<input type="text" class="custom-input col-lg-7">	
 			@endif

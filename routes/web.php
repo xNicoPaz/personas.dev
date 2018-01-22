@@ -31,6 +31,7 @@ Route::get('/personas/crear', 'PersonController@create');
 Route::get('/personas', 'PersonController@index');
 Route::delete('/personas/{person}', 'PersonController@destroy');
 Route::get('/personas/{person}', 'PersonController@show');
+Route::post('/personas', 'PersonController@store');
 
 /*Auth*/
 Auth::routes();

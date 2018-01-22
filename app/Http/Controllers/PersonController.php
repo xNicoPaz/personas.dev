@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Person;
 use App\Town;
 use Illuminate\Http\Request;
+use App\Http\Requests\PersonRegisterRequest;
 
 class PersonController extends Controller
 {
@@ -34,9 +35,28 @@ class PersonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PersonRegisterRequest $request)
     {
-        //
+        if($request['picture'] !== null){
+            $pictureFile = $request->file('picture');
+            $mime = $pictureFile->getMimeType();
+            $base64Data = base64_encode(file_get_contents($pictureFile->getRealPath()));
+            $base64Picture = "data:" . $mime . "; base64, " . $base64Data;            
+        }else{
+            $base64Picture = null;
+        }
+
+        $person = Person::create([
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'dni' => $request['dni'],
+            'birthdate' => $request['birthdate'],
+            'picture' => $base64Picture,
+            'address' => $request['address'],
+            'town_id' => $request['town_id']
+        ]);
+
+        return redirect('/personas/' . $person->id);
     }
 
     /**
