@@ -36,7 +36,7 @@
 		</div>
 		<div class="form-group">
 			<label for="birthdate" class="col-lg-2">Fecha de nacimiento</label>
-			<input type="date" class="custom-input col-lg-7" name="birthdate" @if(!$isEdit) disabled @endif value="{{ $person->birthdate }}">
+			<input type="date" class="custom-input col-lg-7" name="birthdate" @if(!$isEdit) disabled @endif value="{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $person->birthdate)->toDateString() }}">
 		</div>
 		<div class="form-group">
 			<label for="picture" class="col-lg-2">Imagen</label>
