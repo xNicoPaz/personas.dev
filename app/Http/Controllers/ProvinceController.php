@@ -14,7 +14,7 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        //
+        return view('provincias.index');
     }
 
     /**
@@ -80,6 +80,6 @@ class ProvinceController extends Controller
      */
     public function destroy(Province $province)
     {
-        //
+        $province->delete();
     }
 }

@@ -2,9 +2,9 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
-use App\Town;
+use App\Country;
 
-class IndexTownViewComposer
+class IndexCountryViewComposer
 {
     public function __construct()
     {
@@ -19,7 +19,7 @@ class IndexTownViewComposer
      */
     public function compose(View $view)
     {
-        $towns = Town::all();
-        $view->with(['towns' => $towns]);
+        $countries = Country::all();
+        $view->with(['countries' => $countries]);
     }
 }

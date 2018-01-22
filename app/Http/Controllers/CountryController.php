@@ -14,7 +14,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        return view('paises.index');
     }
 
     /**
@@ -80,6 +80,6 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        //
+        $country->delete();
     }
 }

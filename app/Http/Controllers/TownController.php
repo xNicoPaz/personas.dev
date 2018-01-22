@@ -81,5 +81,6 @@ class TownController extends Controller
     public function destroy(Town $town)
     {
         //
+        $town->delete();
     }
 }

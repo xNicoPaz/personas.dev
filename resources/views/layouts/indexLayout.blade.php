@@ -2,7 +2,7 @@
 @section('content')
 	<h1 class="my-4">@yield('title')</h1>
 	<hr>
-	<table id="@yield('tableId')" class="table">
+	<table @yield('tableId') class="table">
 		<thead>
 			@yield('tableHeadings')
 		</thead>
