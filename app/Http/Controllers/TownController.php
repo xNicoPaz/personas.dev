@@ -69,7 +69,12 @@ class TownController extends Controller
      */
     public function edit(Town $town)
     {
-        //
+        $provinces = Province::all();
+        return view('localidades.details')->with([
+            'town' => $town,
+            'provinces' => $provinces,
+            'isEdit' => true,
+        ]);
     }
 
     /**
@@ -79,9 +84,13 @@ class TownController extends Controller
      * @param  \App\Town  $town
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Town $town)
+    public function update(TownRegisterRequest $request, Town $town)
     {
-        //
+        $town->name = $request['name'];
+        $town->province_id = $request['province_id'];
+        $town->save();
+
+        return redirect('/localidades/' . $town->id);
     }
 
     /**

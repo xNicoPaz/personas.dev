@@ -15,4 +15,11 @@ class Person extends Model
     public function town(){
     	return $this->belongsTo(Town::class);
     }
+
+    public static function base64Picture($pictureFile){
+        $mime = $pictureFile->getMimeType();
+        $base64Data = base64_encode(file_get_contents($pictureFile->getRealPath()));
+        
+        return "data:" . $mime . "; base64, " . $base64Data;
+    }
 }

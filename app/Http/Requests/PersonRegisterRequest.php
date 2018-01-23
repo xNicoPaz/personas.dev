@@ -29,7 +29,7 @@ class PersonRegisterRequest extends FormRequest
             'dni' => 'required|integer|digits_between:7,8|unique:people,dni',
             'birthdate' => 'required|date',
             //40KB de tamaño maximo para fotos
-            'picture' => 'nullable|image|size:40',
+            'picture' => 'nullable|image|max:50',
             'address' => 'required|alpha_num_spaces|max:100',
             'town_id' => 'required|integer|exists:towns,id'
         ];
@@ -50,7 +50,7 @@ class PersonRegisterRequest extends FormRequest
             'birthdate.required' => 'La fecha de nacimiento es obligatoria',
             'birthdate.date' => 'La fecha de nacimiento es incorrecta',
             'picture.image' => 'La imagen debe ser un archivo de imagen valido (png, jpeg, etc)',
-            'picture.size' => 'La imagen puede pesar a lo sumo 40KB ',
+            'picture.max' => 'La imagen puede pesar a lo sumo 50KB ',
             'address.required' => 'La dirección es obligatoria',
             'address.alpha_num_spaces' => 'La dirección solo puede contener letras, numeros y espacios',
             'address.max' => 'La dirección solo puede contener hasta 100 caracteres',

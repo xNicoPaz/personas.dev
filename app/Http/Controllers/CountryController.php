@@ -65,7 +65,10 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        //
+        return view('paises.details')->with([
+            'country' => $country,
+            'isEdit' => true,
+        ]);
     }
 
     /**
@@ -75,9 +78,12 @@ class CountryController extends Controller
      * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(CountryRegisterRequest $request, Country $country)
     {
-        //
+        $country->name = $request['name'];
+        $country->save();
+
+        return redirect('/paises/' . $country->id);
     }
 
     /**

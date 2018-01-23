@@ -69,7 +69,12 @@ class ProvinceController extends Controller
      */
     public function edit(Province $province)
     {
-        //
+        $countries = Country::all();
+        return view('provincias.details')->with([
+            'province' => $province,
+            'countries' => $countries,
+            'isEdit' => true,
+        ]);
     }
 
     /**
@@ -79,9 +84,13 @@ class ProvinceController extends Controller
      * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Province $province)
+    public function update(ProvinceRegisterRequest $request, Province $province)
     {
-        //
+        $province->name = $request['name'];
+        $province->country_id = $request['country_id'];
+        $province->save();
+        
+        return redirect('/provincias/' . $province->id);
     }
 
     /**

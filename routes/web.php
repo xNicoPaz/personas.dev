@@ -15,29 +15,37 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/paises/crear', 'CountryController@create');
-Route::get('/paises', 'CountryController@index');
-Route::get('/paises/{country}/destruir', 'CountryController@destroy');
-Route::post('/paises', 'CountryController@store');
-Route::get('/paises/{country}', 'CountryController@show');
-
-Route::get('/provincias/crear', 'ProvinceController@create');
-Route::get('/provincias', 'ProvinceController@index');
-Route::get('/provincias/{province}/destruir', 'ProvinceController@destroy');
-Route::post('/provincias', 'ProvinceController@store');
-Route::get('/provincias/{province}', 'ProvinceController@show');
+Route::get('/personas/crear', 'PersonController@create');
+Route::get('/personas', 'PersonController@index');
+Route::get('/personas/{person}/destruir', 'PersonController@destroy');
+Route::get('/personas/{person}', 'PersonController@show');
+Route::post('/personas', 'PersonController@store');
+Route::get('/personas/{person}/editar', 'PersonController@edit');
+Route::put('/personas/{person}', 'PersonController@update');
 
 Route::get('/localidades/crear', 'TownController@create');
 Route::get('/localidades', 'TownController@index');
 Route::get('/localidades/{town}/destruir', 'TownController@destroy');
 Route::get('/localidades/{town}', 'TownController@show');
 Route::post('/localidades', 'TownController@store');
+Route::get('/localidades/{town}/editar', 'TownController@edit');
+Route::put('/localidades/{town}', 'TownController@update');
 
-Route::get('/personas/crear', 'PersonController@create');
-Route::get('/personas', 'PersonController@index');
-Route::get('/personas/{person}/destruir', 'PersonController@destroy');
-Route::get('/personas/{person}', 'PersonController@show');
-Route::post('/personas', 'PersonController@store');
+Route::get('/provincias/crear', 'ProvinceController@create');
+Route::get('/provincias', 'ProvinceController@index');
+Route::get('/provincias/{province}/destruir', 'ProvinceController@destroy');
+Route::get('/provincias/{province}', 'ProvinceController@show');
+Route::post('/provincias', 'ProvinceController@store');
+Route::get('/provincias/{province}/editar', 'ProvinceController@edit');
+Route::put('/provincias/{province}', 'ProvinceController@update');
+
+Route::get('/paises/crear', 'CountryController@create');
+Route::get('/paises', 'CountryController@index');
+Route::get('/paises/{country}/destruir', 'CountryController@destroy');
+Route::get('/paises/{country}', 'CountryController@show');
+Route::post('/paises', 'CountryController@store');
+Route::get('/paises/{country}/editar', 'CountryController@edit');
+Route::put('/paises/{country}', 'CountryController@update');
 
 /*Auth*/
 Auth::routes();
