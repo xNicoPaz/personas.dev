@@ -2,12 +2,12 @@
 @section('content')
 	<div style="display:inline;">
 		<h1 class="my-4">Detalles de {{ $person->first_name }} </h1>
-		<a href="{{ url('personas/' . $person->id . '/detalles') }}">
+		<a href="{{ url('personas/' . $person->id . '/editar') }}">
 		<button class="btn btn-primary">
 			<i style="color:yellow" class="fa fa-pencil"></i> Editar
 		</button>
 		</a>
-		<a id="deletePersonLink" href="">
+		<a href="{{ url('/personas/' . $person->id . '/destruir') }}">
 		<button class="btn btn-warning">
 			<i style="color:red" class="fa fa-trash"></i> Eliminar
 		</button>

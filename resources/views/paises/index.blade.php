@@ -19,7 +19,7 @@ id="countriesTable"
 	<td>{{ $country->id }}</td>	
 	<td>{{ $country->name }}</td>
 	<td>
-		<a href="{{ url('paises/' . $country->id . '/detalles') }}"><i style="color:blue" class="fa fa-search"></i></a>
+		<a href="{{ url('paises/' . $country->id) }}"><i style="color:blue" class="fa fa-search"></i></a>
 		<a href="{{ url('paises/' . $country->id . '/editar') }}"><i style="color:yellow" class="fa fa-pencil"></i></a>
 		<a href="{{ url('paises/' . $country->id . '/destruir') }}"><i style="color:red" class="fa fa-trash" ></i></a>
 	</td>	
