@@ -1,3 +1,6 @@
+<?php 
+$pathArray = explode('/', Request::path()); 
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">Personas</a>
@@ -6,45 +9,57 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-        <?php 
-          $pathArray = explode('/', Request::path()); 
-        ?>
-          <a class="nav-link" href="{{url('/')}}">Home
-            @if($pathArray[0] === "home" || $pathArray[0] === "index" || count($pathArray) === 0)
-              <span class="sr-only">(current)</span>  
-            @endif
+        <li class="nav-item">
+          <a 
+          @if($pathArray[0] === "")
+            class="nav-link active" 
+          @else
+            class="nav-link" 
+          @endif
+          href="{{url('/')}}" >Home
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{url('/personas/crear')}}">Personas
-            @if($pathArray[0] === "personas")
-              <span class="sr-only">(current)</span>  
-            @endif
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{url('/localidades/crear')}}">Localidades
-            @if($pathArray[0] === "localidades")
-              <span class="sr-only">(current)</span>  
-            @endif
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{url('/provincias/crear')}}">Provincias
-            @if($pathArray[0] === "provincias")
-              <span class="sr-only">(current)</span>  
-            @endif
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{url('/paises/crear')}}">Paises
-            @if($pathArray[0] === "paises")
-              <span class="sr-only">(current)</span>  
-            @endif
-          </a>
-        </li>
-      </ul>
-    </div>
+          <a 
+          @if($pathArray[0] === "personas")
+            class="nav-link active" 
+          @else
+            class="nav-link" 
+          @endif
+          href="{{url('/personas/crear')}}">Personas
+        </a>
+      </li>
+      <li class="nav-item">
+        <a 
+        @if($pathArray[0] === "localidades")
+          class="nav-link active" 
+        @else
+          class="nav-link" 
+        @endif
+        href="{{url('/localidades/crear')}}">Localidades
+        </a>
+      </li>
+      <li class="nav-item">
+        <a 
+        @if($pathArray[0] === "provincias")
+          class="nav-link active" 
+        @else
+          class="nav-link" 
+        @endif
+        href="{{url('/provincias/crear')}}">Provincias
+        </a>
+      </li>
+      <li class="nav-item">
+        <a 
+        @if($pathArray[0] === "paises")
+          class="nav-link active" 
+        @else
+          class="nav-link" 
+        @endif
+        href="{{url('/paises/crear')}}">Paises
+        </a>
+      </li>
+    </ul>
   </div>
+</div>
 </nav>

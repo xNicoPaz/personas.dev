@@ -1,7 +1,10 @@
 @extends('layouts.public')
 @section('content')
-	<h1 class="my-4">@yield('title')</h1>
+	<h1 class="my-4">@yield('title')</h1><small>@yield('small')</small>
 	<hr>
+
+	@yield('middle')
+
 	<table @yield('tableId') class="table">
 		<thead>
 			@yield('tableHeadings')

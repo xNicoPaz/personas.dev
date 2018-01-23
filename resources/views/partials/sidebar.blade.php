@@ -19,6 +19,8 @@
 		@if(count($pathArray) === 3)
 			@if($pathArray[2] === 'editar')
 			class="list-group-item active" 
+			@else
+			class="list-group-item" 
 			@endif
 		@else
 			class="list-group-item" 
@@ -27,9 +29,15 @@
 		Modificación</a>
 		<a href="{{ url('/' . $pathArray[0]) }}" something="{{ Request::path() }}" 
 			@if(count($pathArray) === 1)
-			 class="list-group-item active" 
+			class="list-group-item active" 
+			@elseif(count($pathArray) === 3)
+				@if(!is_numeric($pathArray[1]))
+			 	class="list-group-item active" 
+				@else
+				class="list-group-item"
+				@endif
 			@else
-			 class="list-group-item"
+			class="list-group-item"
 			@endif
 		>
 		Consulta</a>

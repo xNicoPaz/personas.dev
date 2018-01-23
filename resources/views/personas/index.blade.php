@@ -3,6 +3,10 @@
 	Listado de personas registradas
 @endsection
 
+@section('small')
+Haga click en una localidad, provincia o país para filtrar los resultados
+@endsection
+
 @section('tableId')
 id="peopleTable"
 @endsection
