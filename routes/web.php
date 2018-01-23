@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('/paises/crear', 'CountryController@create');
 Route::get('/paises', 'CountryController@index');
 Route::delete('/paises/{country}', 'CountryController@destroy');
+Route::post('/paises', 'CountryController@store');
+Route::get('/paises/{country}', 'CountryController@show');
 
 Route::get('/provincias/crear', 'ProvinceController@create');
 Route::get('/provincias', 'ProvinceController@index');
@@ -33,7 +35,7 @@ Route::post('/localidades', 'TownController@store');
 
 Route::get('/personas/crear', 'PersonController@create');
 Route::get('/personas', 'PersonController@index');
-Route::delete('/personas/{person}', 'PersonController@destroy');
+Route::get('/personas/{person}/destruir', 'PersonController@destroy');
 Route::get('/personas/{person}', 'PersonController@show');
 Route::post('/personas', 'PersonController@store');
 

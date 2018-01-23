@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Country;
 use Illuminate\Http\Request;
+use App\Http\Requests\CountryRegisterRequest;
 
 class CountryController extends Controller
 {
@@ -33,9 +34,13 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CountryRegisterRequest $request)
     {
-        //
+        $country = Country::create([
+            'name' => $request['name']
+        ]);
+
+        return redirect('/paises/' . $country->id);
     }
 
     /**
@@ -46,7 +51,10 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        //
+        return view('paises.details')->with([
+            'country' => $country,
+            'isEdit' => false,
+        ]);
     }
 
     /**
