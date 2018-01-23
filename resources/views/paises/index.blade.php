@@ -20,13 +20,8 @@ id="countriesTable"
 	<td>{{ $country->name }}</td>
 	<td>
 		<a href="{{ url('paises/' . $country->id . '/detalles') }}"><i style="color:blue" class="fa fa-search"></i></a>
-		<a href="{{ url('paises/' . $country->id . '/detalles') }}"><i style="color:yellow" class="fa fa-pencil"></i></a>
-		<a id="deleteCountryLink" href=""><i style="color:red" class="fa fa-trash" ></i></a>
-
-		<form id="deleteCountryForm" style="display:inline;" method="POST" action="{{ url('paises/' . $country->id ) }}">
-			{{ method_field('DELETE') }}
-			{{ csrf_field() }}
-		</form>
+		<a href="{{ url('paises/' . $country->id . '/editar') }}"><i style="color:yellow" class="fa fa-pencil"></i></a>
+		<a href="{{ url('paises/' . $country->id . '/destruir') }}"><i style="color:red" class="fa fa-trash" ></i></a>
 	</td>	
 </tr>
 @endforeach	
@@ -37,11 +32,6 @@ id="countriesTable"
 	$(document).ready(function(){
 		var countriesTable = $('#countriesTable ');
 		countriesTable.find('th:nth-child(1), tr td:nth-child(1)').hide();
-
-		var deleteCountryLink = $('#deleteCountryLink').click(function(e){
-			e.preventDefault();
-			$('#deleteCountryForm').submit();
-		});
 	});
 </script>
 @endsection

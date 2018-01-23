@@ -17,19 +17,19 @@ Route::get('/', function () {
 
 Route::get('/paises/crear', 'CountryController@create');
 Route::get('/paises', 'CountryController@index');
-Route::delete('/paises/{country}', 'CountryController@destroy');
+Route::get('/paises/{country}/destruir', 'CountryController@destroy');
 Route::post('/paises', 'CountryController@store');
 Route::get('/paises/{country}', 'CountryController@show');
 
 Route::get('/provincias/crear', 'ProvinceController@create');
 Route::get('/provincias', 'ProvinceController@index');
-Route::delete('/provincias/{province}', 'ProvinceController@destroy');
+Route::get('/provincias/{province}/destruir', 'ProvinceController@destroy');
 Route::post('/provincias', 'ProvinceController@store');
 Route::get('/provincias/{province}', 'ProvinceController@show');
 
 Route::get('/localidades/crear', 'TownController@create');
 Route::get('/localidades', 'TownController@index');
-Route::delete('/localidades/{town}', 'TownController@destroy');
+Route::get('/localidades/{town}/destruir', 'TownController@destroy');
 Route::get('/localidades/{town}', 'TownController@show');
 Route::post('/localidades', 'TownController@store');
 

@@ -20,13 +20,8 @@ id="provincesTable"
 	<td>{{ $province->name }}</td>
 	<td>
 		<a href="{{ url('provincias/' . $province->id . '/detalles') }}"><i style="color:blue" class="fa fa-search"></i></a>
-		<a href="{{ url('provincias/' . $province->id . '/detalles') }}"><i style="color:yellow" class="fa fa-pencil"></i></a>
-		<a id="deleteProvinceLink" href=""><i style="color:red" class="fa fa-trash" ></i></a>
-
-		<form id="deleteProvinceForm" style="display:inline;" method="POST" action="{{ url('provincias/' . $province->id ) }}">
-			{{ method_field('DELETE') }}
-			{{ csrf_field() }}
-		</form>
+		<a href="{{ url('provincias/' . $province->id . '/editar') }}"><i style="color:yellow" class="fa fa-pencil"></i></a>
+		<a href="{{ url('provincias/' . $province->id . '/destruir') }}"><i style="color:red" class="fa fa-trash" ></i></a>
 	</td>	
 </tr>
 @endforeach	
@@ -37,11 +32,6 @@ id="provincesTable"
 	$(document).ready(function(){
 		var provincesTable = $('#provincesTable ');
 		provincesTable.find('th:nth-child(1), tr td:nth-child(1)').hide();
-
-		var deleteProvinceLink = $('#deleteProvinceLink').click(function(e){
-			e.preventDefault();
-			$('#deleteProvinceForm').submit();
-		});
 	});
 </script>
 @endsection

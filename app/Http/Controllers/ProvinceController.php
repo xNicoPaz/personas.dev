@@ -93,5 +93,6 @@ class ProvinceController extends Controller
     public function destroy(Province $province)
     {
         $province->delete();
+        return redirect('/provincias');
     }
 }
