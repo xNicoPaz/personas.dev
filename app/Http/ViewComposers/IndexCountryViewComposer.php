@@ -19,7 +19,6 @@ class IndexCountryViewComposer
      */
     public function compose(View $view)
     {
-        $countries = Country::all();
-        $view->with(['countries' => $countries]);
+        //
     }
 }

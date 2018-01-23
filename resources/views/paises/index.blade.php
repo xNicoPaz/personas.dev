@@ -4,11 +4,13 @@
 @endsection
 
 @section('middle')
-	<form action="{{ url('/paises/q/') }}" class="form form-inline" method="GET">
+	<form action="{{ url('/paises/q') }}" class="form form-inline" method="POST">
+		{{ csrf_field() }}
 		<label style="display:inline;" for="searchName" class="col-lg-2">Nombre a buscar</label>
 		<input type="text" class="custom-input form-control col-lg-8" name="searchName">
 		<button class="btn btn-primary pull-right"><i class="fa fa-search"></i> Buscar</button>
 	</form>
+	@include('partials.errors2', ['field' => 'searchName'])
 	<br>
 @endsection
 

@@ -15,7 +15,10 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return view('paises.index');
+        $countries = Country::all();
+        return view('paises.index')->with([
+            'countries' => $countries
+        ]);
     }
 
     /**
@@ -96,5 +99,25 @@ class CountryController extends Controller
     {
         $country->delete();
         return redirect('/paises');
+    }
+
+
+    public function query(Request $request){
+        $request->validate(
+            [
+                'searchName' => 'required|alpha_spaces|max:100'
+            ],
+            [
+                'searchName.required' => 'Debe ingresar un nombre para poder realizar la busqueda',
+                'searchName.alpha_spaces' => 'Solo pueden ingresarse letras y espacios',
+                'searchName.max' => 'El nombre a buscar solo puede tener hasta 100 caracteres',
+            ]
+        );
+
+        $countries = Country::whereName($request['searchName'])->get();
+
+        return view('paises.index')->with([
+            'countries' => $countries,
+        ]);
     }
 }

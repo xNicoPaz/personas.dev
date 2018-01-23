@@ -51,6 +51,8 @@ Route::post('/paises', 'CountryController@store');
 Route::get('/paises/{country}/editar', 'CountryController@edit');
 Route::put('/paises/{country}', 'CountryController@update');
 
+Route::post('/paises/q', 'CountryController@query');
+
 /*Auth*/
 Auth::routes();
 
