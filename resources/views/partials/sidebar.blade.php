@@ -15,8 +15,24 @@
             @endif
         >Alta</a>
 		<a href="{{ url('/' . $pathArray[0]) }}" class="list-group-item">Baja</a>
-		<a href="{{ url('/' . $pathArray[0]) }}" class="list-group-item">Modificación</a>
-		<a href="{{ url('/' . $pathArray[0]) }}" class="list-group-item">Consulta</a>
+		<a href="{{ url('/' . $pathArray[0]) }}" 
+		@if(count($pathArray) === 3)
+			@if($pathArray[2] === 'editar')
+			class="list-group-item active" 
+			@endif
+		@else
+			class="list-group-item" 
+		@endif
+		>
+		Modificación</a>
+		<a href="{{ url('/' . $pathArray[0]) }}" something="{{ Request::path() }}" 
+			@if(count($pathArray) === 1)
+			 class="list-group-item active" 
+			@else
+			 class="list-group-item"
+			@endif
+		>
+		Consulta</a>
 	</div>
 	@endif
 </div>
