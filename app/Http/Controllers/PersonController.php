@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Validator;
 use App\Person;
 use App\Town;
+use App\Province;
+use App\Country;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Requests\PersonRegisterRequest;
+use Illuminate\Database\Eloquent\Collection;
 
 class PersonController extends Controller
 {
@@ -18,7 +21,10 @@ class PersonController extends Controller
      */
     public function index()
     {
-        return view('personas.index');
+        $people = Person::all();
+        return view('personas.index')->with([
+            'people' => $people
+        ]);
     }
 
     /**
@@ -167,10 +173,41 @@ class PersonController extends Controller
         return redirect('/personas');
     }
 
+    public function showPeopleByTown(Town $town){
+        $people = $town->people;
+        return view('personas.index')->with([
+            'people' => $people
+        ]);
+    }
 
+    public function showPeopleByProvince(Province $province){
+        $people = new Collection();
+        $towns = $province->towns;
 
+        foreach ($towns as $town) {
+            $people = $people->merge($town->people);
+        }
 
+        return view('personas.index')->with([
+            'people' => $people
+        ]);
+    }
 
+    public function showPeopleByCountry(Country $country){
+        $people = new Collection();
+        $provinces = $country->provinces;
+
+        foreach ($provinces as $province) {
+            $towns = $province->towns;
+            foreach ($towns as $town) {
+                $people = $people->merge($town->people);
+            }
+        }
+
+        return view('personas.index')->with([
+            'people' => $people
+        ]);
+    }
 
     private function base64PictureDataOrNull($request){
         if($request['picture'] !== null){

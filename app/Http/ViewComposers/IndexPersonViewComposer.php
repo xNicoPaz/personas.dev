@@ -19,7 +19,6 @@ class IndexPersonViewComposer
      */
     public function compose(View $view)
     {
-        $people = Person::all();
-        $view->with(['people' => $people]);
+        //
     }
 }

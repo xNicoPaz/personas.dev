@@ -23,6 +23,10 @@ Route::post('/personas', 'PersonController@store');
 Route::get('/personas/{person}/editar', 'PersonController@edit');
 Route::put('/personas/{person}', 'PersonController@update');
 
+Route::get('/personas/localidades/{town}', 'PersonController@showPeopleByTown');
+Route::get('/personas/provincias/{province}', 'PersonController@showPeopleByProvince');
+Route::get('/personas/paises/{country}', 'PersonController@showPeopleByCountry');
+
 Route::get('/localidades/crear', 'TownController@create');
 Route::get('/localidades', 'TownController@index');
 Route::get('/localidades/{town}/destruir', 'TownController@destroy');

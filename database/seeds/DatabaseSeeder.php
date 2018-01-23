@@ -277,17 +277,18 @@ class CountriesTableSeeder extends Seeder
 		Country::create([
 			'name' => 'Argentina'
 		]);
+		Country::create([
+			'name' => 'Chile'
+		]);
     }
 }
 
 class ProvincesTownsPeopleTableSeeder extends Seeder
 {
 	public function run(){
-		//Argentina tiene id = 13
-		$arg = Country::where('name', '=', 'Argentina')->get()[0];
-		/*
-			Dos provincias, como para probar
-		*/
+		$arg = Country::whereName('Argentina')->get()[0];
+		$chi = Country::whereName('Chile')->get()[0];
+
 		$santiago = Province::create([
 			'name' => 'Santiago del Estero',
 			'country_id' => $arg->id,
@@ -296,10 +297,10 @@ class ProvincesTownsPeopleTableSeeder extends Seeder
 			'name' => 'Tucumán',
 			'country_id' => $arg->id,
 		]); 
-
-		/*
-			Una localidad en cada provincia
-		*/
+		$valparaiso = Province::create([
+			'name' => 'Valparaíso',
+			'country_id' => $chi->id,
+		]);
 
 		$termas = Town::create([
 			'name' => 'Termas de Rio Hondo',
@@ -309,10 +310,11 @@ class ProvincesTownsPeopleTableSeeder extends Seeder
 			'name' => 'El cadillal',
 			'province_id' => $tucuman->id
 		]);
+		$sanFelipe = Town::create([
+			'name' => 'San Felipe',
+			'province_id' => $valparaiso->id
+		]);
 
-		/*
-			Una persona en cada localidad
-		*/
 		$person1 = Person::create([
 			'last_name' => 'Perez',
 			'first_name' => 'Juan',
@@ -328,6 +330,14 @@ class ProvincesTownsPeopleTableSeeder extends Seeder
 			'birthdate' => Carbon\Carbon::createFromFormat('d/m/Y', '19/6/1988'),
 			'address' => 'Roca S 246',
 			'town_id' => $cadillal->id
+		]);
+		$person3 = Person::create([
+			'last_name' => 'Gomez',
+			'first_name' => 'Gustavo',
+			'dni' => '23589654',
+			'birthdate' => Carbon\Carbon::createFromFormat('d/m/Y', '25/5/1990'),
+			'address' => 'Av Valparaíso N 345',
+			'town_id' => $sanFelipe->id
 		]);
 	}
 }
