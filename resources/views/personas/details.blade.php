@@ -1,7 +1,7 @@
 @extends('layouts.public')
 @section('content')
 	<div style="display:inline;">
-		<h1 class="my-4">Detalles de {{ $person->first_name }} </h1>
+		<h1 class="my-4">Detalles de {{ $person->first_name }} <i class="fa fa-user"></i></h1>
 		@if(!$isEdit)
 		<a href="{{ url('personas/' . $person->id . '/editar') }}">
 		<button class="btn btn-primary">
@@ -81,6 +81,11 @@
 			</select>
 		</div>
 		@include('partials.errors2', ['field' => 'town_id'])
+
+		@if(!$isEdit)
+		@include('partials.input', ['name' => 'provinceName', 'type' => 'text', 'value' => $person->town->province->name, 'display' => 'Provincia', 'disabled' => true])
+		@include('partials.input', ['name' => 'countryName', 'type' => 'text', 'value' => $person->town->province->country->name, 'display' => 'País', 'disabled' => true])
+		@endif
 
 		<hr>
 		@if($isEdit)

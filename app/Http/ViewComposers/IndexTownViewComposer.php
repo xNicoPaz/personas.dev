@@ -19,7 +19,6 @@ class IndexTownViewComposer
      */
     public function compose(View $view)
     {
-        $towns = Town::all();
-        $view->with(['towns' => $towns]);
+        //
     }
 }

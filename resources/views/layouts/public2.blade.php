@@ -5,8 +5,7 @@
 	@include('partials.nav')
 	<div id="wrap" class="container">
 		<div id="main" class="row">
-			@include('partials.sidebar')
-			<div class="col-lg-10">
+			<div class="col-lg-12">
 				@yield('content')
 			</div>
 		</div>		

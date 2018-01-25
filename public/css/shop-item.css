@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-item/blob/master/LICENSE)
  */
 
-body {
+ body {
   padding-top: 54px;
 }
 
@@ -16,4 +16,38 @@ body {
 
 .custom-input{
 	display : inline;
+}
+
+.pointer{
+	cursor: pointer;
+}
+
+html, body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+
+.footer {
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
+  padding-bottom: 20px;
+} 
+
+.carousel-image{
+  height: 400px;
+}
+
+.bg-custom{
+  background-color: #393877;
 }

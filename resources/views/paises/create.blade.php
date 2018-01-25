@@ -8,7 +8,8 @@
 			<label class="col-lg-2" for="name">Nombre</label>
 			<input class="custom-input form-control col-lg-7" type="text" name="name">
 		</div>
+		@include('partials.errors2', ['field' => 'name'])
 		<hr>
-		<input class="btn btn-primary pull-right" type="submit" value="Enviar">
+		<button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Añadir país</button>
 	</form>
 @endsection

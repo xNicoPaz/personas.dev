@@ -1,7 +1,7 @@
 @extends('layouts.public')
 @section('content')
 	<div style="display:inline;">
-		<h1 class="my-4">Detalles de {{ $country->name }} </h1>
+		<h1 class="my-4">Detalles de {{ $country->name }} <i class="fa fa-globe"></i></h1>
 		@if(!$isEdit)
 		<a href="{{ url('paises/' . $country->id . '/editar') }}">
 		<button class="btn btn-primary">
@@ -12,7 +12,8 @@
 		<button class="btn btn-warning">
 			<i style="color:red" class="fa fa-trash"></i> Eliminar
 		</button>
-		</a>		
+		</a>
+		<a href="{{ url('/personas/paises/' . $country->id) }}"><button class="btn btn-success"><i class="fa fa-user"></i> Ver personas de aqui</button></a>
 		@endif
 	</div>
 

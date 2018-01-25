@@ -10,6 +10,7 @@ use App\Country;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Requests\PersonRegisterRequest;
+use App\Http\Requests\SearchPersonRequest;
 use Illuminate\Database\Eloquent\Collection;
 
 class PersonController extends Controller
@@ -203,6 +204,19 @@ class PersonController extends Controller
                 $people = $people->merge($town->people);
             }
         }
+
+        return view('personas.index')->with([
+            'people' => $people
+        ]);
+    }
+
+    public function query(SearchPersonRequest $request){
+        $peopleResultsByDni = Person::whereDni($request['searchValue'])->get();
+        $peopleResultsByFirstName = Person::whereFirstName($request['searchValue'])->get();
+        $peopleResultsByLastName = Person::whereLastName($request['searchValue'])->get();
+        
+        $people = new Collection();
+        $people = $people->merge($peopleResultsByDni)->merge($peopleResultsByFirstName)->merge($peopleResultsByLastName);
 
         return view('personas.index')->with([
             'people' => $people

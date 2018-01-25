@@ -8,7 +8,7 @@
 			<label class="col-lg-2" for="name">Nombre</label>
 			<input class="custom-input form-control col-lg-7" type="text" name="name">
 		</div>
-		@includeWhen(count($errors->get('name')) > 0 , 'partials.errors', ['field' => 'name'])
+		@include('partials.errors2', ['field' => 'name'])
 
 		<div class="form-group">
 			<label for="country_id" class="col-lg-2">País</label>
@@ -17,10 +17,24 @@
 				<option value="{{ $country->id }}">{{ $country->name }}</option>
 			@endforeach
 			</select>
+			<a id="newCountryBtn" href="{{ url('/paises/crear') }}" class="col-lg-2 btn btn-primary" target="blank" ><i class="fa fa-plus"></i> Añadir país</a>
 		</div>
-		@includeWhen(count($errors->get('country_id')) > 0 , 'partials.errors', ['field' => 'country_id'])
+		@include('partials.errors2', ['field' => 'country_id'])
 
 		<hr>
-		<input class="btn btn-primary pull-right" type="submit" value="Enviar">
+		<button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Añadir prov.</button>
 	</form>
+@endsection
+
+@section('customScripts')
+<script>
+	$(document).ready(function(){
+		var newCountryBtn = $('#newCountryBtn');
+
+		newCountryBtn.click(function(e){
+			e.preventDefault();
+			window.open($(this).attr('href'), '_blank');
+		});
+	});
+</script>
 @endsection

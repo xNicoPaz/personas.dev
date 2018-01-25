@@ -1,7 +1,7 @@
 @extends('layouts.public')
 @section('content')
 	<div style="display:inline;">
-		<h1 class="my-4">Detalles de {{ $province->name }} </h1>
+		<h1 class="my-4">Detalles de {{ $province->name }} <i class="fa fa-flag"></i></h1>
 		@if(!$isEdit)
 		<a href="{{ url('provincias/' . $province->id . '/editar') }}">
 		<button class="btn btn-primary">
@@ -13,6 +13,7 @@
 			<i style="color:red" class="fa fa-trash"></i> Eliminar
 		</button>
 		</a>
+		<a href="{{ url('/personas/provincias/' . $province->id) }}"><button class="btn btn-success"><i class="fa fa-user"></i> Ver personas de aqui</button></a>
 		@endif
 	</div>
 

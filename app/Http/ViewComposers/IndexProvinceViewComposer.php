@@ -19,7 +19,6 @@ class IndexProvinceViewComposer
      */
     public function compose(View $view)
     {
-        $provinces = Province::all();
-        $view->with(['provinces' => $provinces]);
+        //
     }
 }

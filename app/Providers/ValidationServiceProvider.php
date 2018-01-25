@@ -23,6 +23,30 @@ class ValidationServiceProvider extends ServiceProvider
             return preg_match('/[a-zA-Z0-9 ]/u', $value); 
         });
 
+        Validator::extend('dni_or_string', function($attribute, $value, $parameters, $validator){
+            $value = strval($value);
+            $strMaxLength = $parameters[0];
+            $length = strlen($value);
+
+            if(is_numeric($value)){
+                if($length === 7 || $length === 8){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                if(!preg_match('~[0-9]~', $value)){
+                    if($length <= $strMaxLength){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
+            }
+        });
+
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 @section('content')
 	<div style="display:inline;">
-		<h1 class="my-4">Detalles de {{ $town->name }} </h1>
+		<h1 class="my-4">Detalles de {{ $town->name }} <i class="fa fa-map-marker"></i></h1>
 		@if(!$isEdit)
 		<a href="{{ url('localidades/' . $town->id . '/editar') }}">
 		<button class="btn btn-primary">
@@ -13,6 +13,7 @@
 			<i style="color:red" class="fa fa-trash"></i> Eliminar
 		</button>
 		</a>
+		<a href="{{ url('/personas/localidades/' . $town->id) }}"><button class="btn btn-success"><i class="fa fa-user"></i> Ver personas de aqui</button></a>
 		@endif		
 	</div>
 
@@ -47,6 +48,9 @@
 			</select>
 		</div>
 		@include('partials.errors2', ['field' => 'province_id'])
+		@if(!$isEdit && isset($town->province->country))
+		@include('partials.input', ['name' => 'countryName', 'type' => 'text', 'display' => 'País', 'value' => $town->province->country->name, 'disabled' => true])
+		@endif
 		<hr>
 
 		@if($isEdit)

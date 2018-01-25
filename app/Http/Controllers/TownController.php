@@ -6,6 +6,7 @@ use App\Town;
 use App\Province;
 use Illuminate\Http\Request;
 use App\Http\Requests\TownRegisterRequest;
+use App\Http\Requests\SearchNameRequest;
 
 class TownController extends Controller
 {
@@ -16,7 +17,10 @@ class TownController extends Controller
      */
     public function index()
     {
-        return view('localidades.index');
+        $towns = Town::all();
+        return view('localidades.index')->with([
+            'towns' => $towns
+        ]);
     }
 
     /**
@@ -103,5 +107,12 @@ class TownController extends Controller
     {
         $town->delete();
         return redirect('/localidades');
+    }
+
+    public function query(SearchNameRequest $request){
+        $towns = Town::whereName($request['searchName'])->get();
+        return view('localidades.index')->with([
+            'towns' => $towns
+        ]);
     }
 }

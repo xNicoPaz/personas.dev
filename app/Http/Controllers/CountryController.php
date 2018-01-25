@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use App\Country;
 use Illuminate\Http\Request;
 use App\Http\Requests\CountryRegisterRequest;
+use App\Http\Requests\SearchNameRequest;
 
 class CountryController extends Controller
 {
@@ -102,22 +104,10 @@ class CountryController extends Controller
     }
 
 
-    public function query(Request $request){
-        $request->validate(
-            [
-                'searchName' => 'required|alpha_spaces|max:100'
-            ],
-            [
-                'searchName.required' => 'Debe ingresar un nombre para poder realizar la busqueda',
-                'searchName.alpha_spaces' => 'Solo pueden ingresarse letras y espacios',
-                'searchName.max' => 'El nombre a buscar solo puede tener hasta 100 caracteres',
-            ]
-        );
-
+    public function query(SearchNameRequest $request){
         $countries = Country::whereName($request['searchName'])->get();
-
         return view('paises.index')->with([
             'countries' => $countries,
-        ]);
+        ]);            
     }
 }

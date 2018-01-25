@@ -41,11 +41,26 @@
 					<option value="{{ $town->id }}">{{ $town->name }}</option>
 				@endforeach
 			</select>
+			<a id="newTownBtn" href="{{ url('/localidades/crear') }}" class="col-lg-2 btn btn-primary" target="blank" ><i class="fa fa-plus"></i> Añadir local.</a>
 		</div>
 		@includeWhen(count($errors->get('town_id')) > 0 , 'partials.errors', ['field' => 'town_id'])
 		<hr>
 		<div class="form-group">
-			<input class="btn pull-right btn-primary" type="submit" value="Enviar">		
+			<button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Añadir persona</button>
+			<!-- <input class="btn pull-right btn-success" type="submit" value="Enviar">		 -->
 		</div>
 	</form>
+@endsection
+
+@section('customScrips')
+<script>
+	$(document).ready(function(){
+		var newTownBtn = $('#newTownBtn');
+
+		newTownBtn.click(function(e){
+			e.preventDefault();
+			window.open($(this).attr('href'), '_blank');
+		});
+	});
+</script>
 @endsection

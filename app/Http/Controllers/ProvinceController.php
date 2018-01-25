@@ -6,6 +6,7 @@ use App\Province;
 use App\Country;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProvinceRegisterRequest;
+use App\Http\Requests\SearchNameRequest;
 
 class ProvinceController extends Controller
 {
@@ -16,7 +17,10 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        return view('provincias.index');
+        $provinces = Province::all();
+        return view('provincias.index')->with([
+            'provinces' => $provinces
+        ]);
     }
 
     /**
@@ -103,5 +107,12 @@ class ProvinceController extends Controller
     {
         $province->delete();
         return redirect('/provincias');
+    }
+
+    public function query(SearchNameRequest $request){
+        $provinces = Province::whereName($request['searchName'])->get();
+        return view('provincias.index')->with([
+            'provinces' => $provinces
+        ]);
     }
 }
