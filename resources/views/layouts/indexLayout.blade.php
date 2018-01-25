@@ -5,7 +5,7 @@
 
 	@yield('middle')
 
-	<table @yield('tableId') class="table">
+	<table @yield('tableId') class="table table-responsive table-inverse">
 		<thead>
 			@yield('tableHeadings')
 		</thead>
